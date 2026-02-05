@@ -18,8 +18,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.use("/records", recordsRoute);
 app.use("/auth", authRoute);
+app.use("/records", recordsRoute);
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const PORT = process.env.PORT || 3001;
