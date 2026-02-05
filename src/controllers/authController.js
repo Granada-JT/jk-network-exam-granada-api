@@ -18,7 +18,7 @@ export const handleLogin = async (req, res) => {
     if (!valid) return res.status(401).json({ error: "Invalid Password" });
 
     // Create JWT payload
-    const payload = { sub: user.id, email: user.email, role: user.accountType };
+    const payload = { user_id: user.id, email: user.email, role: user.accountType };
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
     const isProd = process.env.NODE_ENV === "production";
     const cookieStr = cookie.serialize("app_session", token, {
@@ -31,7 +31,7 @@ export const handleLogin = async (req, res) => {
 
     res.setHeader("Set-Cookie", cookieStr);
 
-    return res.status(200).json({ valid: valid });
+    return res.status(200).json({ valid: valid, id: user.id });
   } catch (err) {
     console.error("handleLogin error:", err);
     return res.status(500).json({ error: err?.message ?? "Server error" });
