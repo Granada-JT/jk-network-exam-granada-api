@@ -1,0 +1,25 @@
+generator client {
+	provider = "prisma-client-js"
+	output   = "../src/generated/prisma"
+  engineType = "library"
+}
+
+datasource db {
+	provider = "mysql"
+}
+
+model employee_records {
+  id           String   @id @default(uuid())
+  firstName    String   @map("first_name")
+  lastName     String   @map("last_name")
+  email        String   @unique
+  password     String   @db.VarChar(255)
+  username     String
+  accountType  String   @map("account_type")
+  country      String
+	phone        String?
+	address      String?
+	imageSrc     String   @db.MediumText @map("image_src")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+}
