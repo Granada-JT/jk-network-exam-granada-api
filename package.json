@@ -4,8 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "cd src && nodemon server.js",
-    "db:setup": "node -e \"if (!require('fs').existsSync('prisma/migrations')) require('fs').mkdirSync('prisma/migrations', { recursive: true })\" && npx prisma generate && npx prisma migrate dev --name init && npx prisma db push"
+    "dev": "nodemon server.js",
+    "db:setup": "node -e \"if (!require('fs').existsSync('prisma/migrations')) require('fs').mkdirSync('prisma/migrations', { recursive: true })\" && npx prisma generate && npx prisma migrate dev --name init && npx prisma db push",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
