@@ -1,15 +1,11 @@
-
 import cors from 'cors';
-import dotenv from 'dotenv';
 import express from 'express';
 import { fileURLToPath } from 'node:url';
-import recordsRoute from './routes/records.js'
-import authRoute from './routes/auth.js'
-
-dotenv.config();
 
 const app = express();
 const FRONTEND_ORIGIN = process.env.APP_URL;
+import recordsRoute from './src/routes/records.js'
+import authRoute from './src/routes/auth.js'
 
 app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ limit: '5mb', extended: true }));

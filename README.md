@@ -23,14 +23,13 @@ root/
 │   └── schema.prisma
 ├── src/                    # BUSINESS LOGIC
 │   ├── controllers/
-│   ├── routes/
 │   ├── lib/
-│   ├── middleware/
-│   └── server.js
+│   └── routes/
 ├── .env
 ├── .env.example
 ├── docker-compose.yaml
 ├── package.json
+├── server.js
 └── README.md
 ```
 
@@ -95,9 +94,10 @@ What this command does internally:
   4. Executes `db push` to ensure the schema is strictly synced.
 
 ### 5. Run the Server
-Start the API with via npm:
+Start the API via npm:
 ```bash
-npm run dev
+npm run dev       # local environment
+npm run start     # production environment
 ```
 ### Author: 
 
